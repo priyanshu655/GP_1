@@ -1,0 +1,26 @@
+# Build output
+bin/
+obj/
+
+# Visual Studio user-specific files
+*.csproj.user
+*.csproj
+*.sln
+*.user
+*.suo
+
+# Visual Studio cache
+.vs/
+
+# Rider
+.idea/
+
+# NuGet
+packages/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db

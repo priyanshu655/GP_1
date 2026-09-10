@@ -83,7 +83,7 @@ public static class Seed
                     c_user_id INTEGER NOT NULL,
                     c_category_id INTEGER NOT NULL,
                     c_transaction_date DATE NOT NULL DEFAULT CURRENT_DATE,
-                    c_description VARCHAR(255) NOT NULL,
+                    c_description VARCHAR(255) NULL,
                     c_amount NUMERIC(12,2) NOT NULL,
                     c_created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
