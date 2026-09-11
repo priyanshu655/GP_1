@@ -1,0 +1,41 @@
+## Generic Visual Studio build artifacts
+## ------------------------------------
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Xx]64/
+[Xx]86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bbin/
+bin/
+obj/
+
+## Visual Studio cache, tracking, and user-specific configuration files
+## ---------------------------------------------------------------------
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## NuGet packages and restored dependencies
+## ----------------------------------------
+*.nuget.props
+*.nuget.targets
+packages/
+
+## Crash dumps and build logging outputs
+## -------------------------------------
+*.cslog
+*.log
+*.aps
+*.cache
+*.dxactivitylog
+
+
+## Resharper or other IDE extension folders (Optional but recommended)
+## ------------------------------------------------------------------
+_ReSharper*/
+*.ReSharper
+*.DotSettings.user
