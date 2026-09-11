@@ -5,7 +5,7 @@ namespace GP_1.Forms
 {
     public partial class FrmTransactionInput : Form
     {
-        private const int CurrentUserId = 1;
+        private readonly int currentUserId;
 
         private TransactionService transactionService = new TransactionService();
 
@@ -19,14 +19,16 @@ namespace GP_1.Forms
             }
         }
 
-        public FrmTransactionInput()
+        public FrmTransactionInput(int userId)
         {
             InitializeComponent();
+            currentUserId = userId;
         }
 
-        public FrmTransactionInput(Transaction transaction)
+        public FrmTransactionInput(int userId, Transaction transaction)
         {
             InitializeComponent();
+            currentUserId = userId;
             currentTransaction = transaction;
         }
 
@@ -191,7 +193,7 @@ namespace GP_1.Forms
             {
                 Transaction transaction = new Transaction();
                 transaction.TransactionId = currentTransaction!.TransactionId;
-                transaction.UserId = CurrentUserId;
+                transaction.UserId = currentUserId;
                 transaction.CategoryId = categoryId;
                 transaction.TransactionDate = dtpTransactionDate.Value.Date;
                 transaction.Description = txtDescription.Text.Trim();
@@ -202,7 +204,7 @@ namespace GP_1.Forms
             else
             {
                 Transaction transaction = new Transaction();
-                transaction.UserId = CurrentUserId;
+                transaction.UserId = currentUserId;
                 transaction.CategoryId = categoryId;
                 transaction.TransactionDate = dtpTransactionDate.Value.Date;
                 transaction.Description = txtDescription.Text.Trim();

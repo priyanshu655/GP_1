@@ -5,7 +5,7 @@ namespace GP_1.Services
 {
     public class TransactionService
     {
-        private readonly string connectionString = "Server=localhost;Port=5432;Database=MoneyMap;User Id=postgres;Password=root;";
+        private readonly string connectionString = DatabaseService.ConnectionString;
 
         //START: Added By: Vishw Date: 10-sep-2026 Desc: Load categories by transaction type name
         public List<Transaction> GetCategoriesByTypeName(string typeName)

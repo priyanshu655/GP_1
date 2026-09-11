@@ -5,18 +5,23 @@ namespace GP_1.Forms
 {
     public partial class FrmTransaction : Form
     {
-        private const int CurrentUserId = 1;
+        private readonly int currentUserId;
+
+        private readonly string currentUsername;
 
         private TransactionService transactionService = new TransactionService();
 
-        public FrmTransaction()
+        public FrmTransaction(int userId, string username)
         {
             InitializeComponent();
+            currentUserId = userId;
+            currentUsername = username;
         }
 
         //START: Added By: Vishw Date: 11-sep-2026 Desc: Form load event - load transactions
         private void FrmTransaction_Load(object sender, EventArgs e)
         {
+            lblWelcome.Text = "Welcome, " + currentUsername + "!";
             LoadTransactions();
         }
         //END: Added By: Vishw Date: 11-sep-2026 Desc: Form load event - load transactions
@@ -24,7 +29,7 @@ namespace GP_1.Forms
         //START: Added By: Vishw Date: 11-sep-2026 Desc: Load transactions into DataGridView
         private void LoadTransactions()
         {
-            List<Transaction> transactions = transactionService.GetTransactionsByUserId(CurrentUserId);
+            List<Transaction> transactions = transactionService.GetTransactionsByUserId(currentUserId);
 
             dgridTransactions.DataSource = null;
             dgridTransactions.DataSource = transactions;
@@ -34,7 +39,7 @@ namespace GP_1.Forms
         //START: Added By: Vishw Date: 11-sep-2026 Desc: Insert button click - open popup to add a new transaction
         private void btnInsert_Click(object sender, EventArgs e)
         {
-            using (FrmTransactionInput frmInput = new FrmTransactionInput())
+            using (FrmTransactionInput frmInput = new FrmTransactionInput(currentUserId))
             {
                 if (frmInput.ShowDialog(this) == DialogResult.OK)
                 {
@@ -74,7 +79,7 @@ namespace GP_1.Forms
         //START: Added By: Vishw Date: 11-sep-2026 Desc: Open popup with the selected transaction loaded for update
         private void OpenUpdatePopup(Transaction transaction)
         {
-            using (FrmTransactionInput frmInput = new FrmTransactionInput(transaction))
+            using (FrmTransactionInput frmInput = new FrmTransactionInput(currentUserId, transaction))
             {
                 if (frmInput.ShowDialog(this) == DialogResult.OK)
                 {
@@ -99,7 +104,7 @@ namespace GP_1.Forms
                 return;
             }
 
-            transactionService.DeleteTransaction(transaction.TransactionId, CurrentUserId);
+            transactionService.DeleteTransaction(transaction.TransactionId, currentUserId);
 
             MessageBox.Show("Transaction deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

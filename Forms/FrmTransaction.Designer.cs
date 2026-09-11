@@ -18,6 +18,7 @@ namespace GP_1.Forms
         {
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnInsert = new System.Windows.Forms.Button();
+            this.lblWelcome = new System.Windows.Forms.Label();
             this.dgridTransactions = new System.Windows.Forms.DataGridView();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,11 +40,19 @@ namespace GP_1.Forms
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Income / Expense Transaction";
 
+            // lblWelcome
+            this.lblWelcome.AutoSize = true;
+            this.lblWelcome.Location = new System.Drawing.Point(16, 46);
+            this.lblWelcome.Name = "lblWelcome";
+            this.lblWelcome.Size = new System.Drawing.Size(60, 15);
+            this.lblWelcome.TabIndex = 1;
+            this.lblWelcome.Text = "Welcome";
+
             // btnInsert
             this.btnInsert.Location = new System.Drawing.Point(728, 12);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(120, 36);
-            this.btnInsert.TabIndex = 1;
+            this.btnInsert.TabIndex = 2;
             this.btnInsert.Text = "Insert";
             this.btnInsert.UseVisualStyleBackColor = true;
             this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
@@ -62,10 +71,10 @@ namespace GP_1.Forms
                 this.colAmount,
                 this.colUpdate,
                 this.colDelete});
-            this.dgridTransactions.Location = new System.Drawing.Point(12, 60);
+            this.dgridTransactions.Location = new System.Drawing.Point(12, 78);
             this.dgridTransactions.Name = "dgridTransactions";
             this.dgridTransactions.RowHeadersVisible = false;
-            this.dgridTransactions.Size = new System.Drawing.Size(836, 448);
+            this.dgridTransactions.Size = new System.Drawing.Size(836, 430);
             this.dgridTransactions.TabIndex = 2;
             this.dgridTransactions.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgridTransactions_CellClick);
 
@@ -135,6 +144,7 @@ namespace GP_1.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(860, 520);
             this.Controls.Add(this.lblTitle);
+            this.Controls.Add(this.lblWelcome);
             this.Controls.Add(this.btnInsert);
             this.Controls.Add(this.dgridTransactions);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -150,6 +160,7 @@ namespace GP_1.Forms
         #endregion
 
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Label lblWelcome;
         private System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.DataGridView dgridTransactions;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
