@@ -572,7 +572,7 @@ namespace MoneyMap.AdminPanel.Categories
                 DataGridViewSelectionMode.FullRowSelect;
 
             dgvCategories.Size =
-                new Size(1070, 195);
+                new Size(1070, 450);
 
             dgvCategories.CellClick +=
                 DgvCategories_CellClick;

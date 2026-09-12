@@ -679,7 +679,7 @@ namespace MoneyMap.AdminPanel.Settings
                 DataGridViewSelectionMode.FullRowSelect;
 
             dgvSettings.Size =
-                new Size(1070, 125);
+                new Size(1070, 400 );
 
             dgvSettings.CellClick +=
                 DgvSettings_CellClick;

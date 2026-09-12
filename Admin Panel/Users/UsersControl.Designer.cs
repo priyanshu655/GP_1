@@ -90,18 +90,9 @@ namespace MoneyMap.AdminPanel.Users
             #region Title
 
             lblTitle.AutoSize = true;
-
-            lblTitle.Font =
-                new Font(
-                    "Segoe UI",
-                    22F,
-                    FontStyle.Bold);
-
-            lblTitle.ForeColor =
-                Color.FromArgb(15, 23, 42);
-
-            lblTitle.Location =
-                new Point(40, 25);
+            lblTitle.Font =new Font("Segoe UI",22F,FontStyle.Bold);
+            lblTitle.ForeColor = Color.FromArgb(15, 23, 42);
+            lblTitle.Location = new Point(40, 25);
 
             lblTitle.Name =
                 "lblTitle";
@@ -487,15 +478,9 @@ namespace MoneyMap.AdminPanel.Users
             lblSearch.Text =
                 "Search";
 
-            txtSearch.BorderStyle =
-                BorderStyle.FixedSingle;
-
-            txtSearch.Location =
-                new Point(40, 357);
-
-            txtSearch.Name =
-                "txtSearch";
-
+            txtSearch.BorderStyle = BorderStyle.FixedSingle;
+            txtSearch.Location = new Point(40, 357);
+            txtSearch.Name = "txtSearch";
             txtSearch.Size =
                 new Size(300, 27);
 
@@ -601,7 +586,7 @@ namespace MoneyMap.AdminPanel.Users
                 DataGridViewSelectionMode.FullRowSelect;
 
             dgvUsers.Size =
-                new Size(1070, 190);
+                new Size(1070, 450);
 
             dgvUsers.CellClick +=
                 DgvUsers_CellClick;

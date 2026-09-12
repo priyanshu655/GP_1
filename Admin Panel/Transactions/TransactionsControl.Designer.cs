@@ -683,7 +683,7 @@ namespace MoneyMap.AdminPanel.Transactions
                 DataGridViewSelectionMode.FullRowSelect;
 
             dgvTransactions.Size =
-                new Size(1070, 160);
+                new Size(1070, 430);
 
             dgvTransactions.CellClick +=
                 DgvTransactions_CellClick;

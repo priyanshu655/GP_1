@@ -613,7 +613,7 @@ namespace MoneyMap.AdminPanel.Budgets
                 DataGridViewSelectionMode.FullRowSelect;
 
             dgvBudgets.Size =
-                new Size(1070, 165);
+                new Size(1070, 430);
 
             dgvBudgets.CellClick +=
                 DgvBudgets_CellClick;
