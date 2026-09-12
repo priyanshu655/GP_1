@@ -1,0 +1,11 @@
+c_user_id,c_category_id,c_transaction_date,c_description,c_amount
+1,1,2026-09-01,Monthly Salary,55000.00
+1,2,2026-09-02,Grocery Store Purchase,3250.00
+1,3,2026-09-03,Electricity and Power Bill,1450.00
+1,4,2026-09-04,Dining out with Friends,1800.00
+1,1,2026-09-05,Freelance Web Development,15000.00
+1,5,2026-09-06,Fuel and Petrol,2200.00
+1,6,2026-09-07,Movie and Entertainment,850.00
+1,7,2026-09-08,Medical and Pharmacy,650.00
+1,1,2026-09-09,Stock Investment Dividend,4200.00
+1,8,2026-09-10,Home Maintenance and Repairs,1200.00

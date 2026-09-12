@@ -1,9 +1,10 @@
-namespace _;
-
-public partial class Form1 : Form
+namespace MoneyMap
 {
-    public Form1()
+    public partial class Form1 : Form
     {
-        InitializeComponent();
+        public Form1()
+        {
+            InitializeComponent();
+        }
     }
 }

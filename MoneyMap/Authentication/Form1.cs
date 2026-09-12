@@ -1,5 +1,6 @@
-
 using System;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using LoginPage;
@@ -18,6 +19,41 @@ namespace SignupPage
         public Form1()
         {
             InitializeComponent();
+            SetupCardStyling();
+        }
+
+        private void SetupCardStyling()
+        {
+            cardPanel.Paint += (s, e) =>
+            {
+                e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                using var borderPen = new Pen(Color.FromArgb(226, 232, 240), 1.5f);
+                Rectangle rect = cardPanel.ClientRectangle;
+                rect.Width -= 1;
+                rect.Height -= 1;
+                e.Graphics.DrawRectangle(borderPen, rect);
+            };
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            CenterCard();
+            textBox1.Focus();
+        }
+
+        private void RightPanel_Resize(object sender, EventArgs e)
+        {
+            CenterCard();
+        }
+
+        private void CenterCard()
+        {
+            if (rightPanel == null || cardPanel == null) return;
+
+            int targetX = Math.Max(20, (rightPanel.ClientSize.Width - cardPanel.Width) / 2);
+            int targetY = Math.Max(20, (rightPanel.ClientSize.Height - cardPanel.Height) / 2);
+
+            cardPanel.Location = new Point(targetX, targetY);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -199,4 +235,3 @@ namespace SignupPage
         }
     }
 }
-

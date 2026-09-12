@@ -1,22 +1,58 @@
 using System;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using Npgsql;
-using SignupPage;   // Needed to open your Signup Form1
+using SignupPage;
 using MoneyMap.Main;
+using MoneyMap.Authentication;
 
 namespace LoginPage
 {
     public partial class Login : Form
     {
-        // Same connection you use in Signup
         private string connectionString = "Server=localhost;Port=5432;Database=MoneyMap;Username=postgres;Password=password";
 
-        // Holds the ID of the logged-in user (use this when opening a dashboard)
         public int LoggedInUserId { get; private set; } = -1;
 
         public Login()
         {
             InitializeComponent();
+            SetupCardStyling();
+        }
+
+        private void SetupCardStyling()
+        {
+            cardPanel.Paint += (s, e) =>
+            {
+                e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                using var borderPen = new Pen(Color.FromArgb(226, 232, 240), 1.5f);
+                Rectangle rect = cardPanel.ClientRectangle;
+                rect.Width -= 1;
+                rect.Height -= 1;
+                e.Graphics.DrawRectangle(borderPen, rect);
+            };
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            CenterCard();
+            textBox1.Focus();
+        }
+
+        private void RightPanel_Resize(object sender, EventArgs e)
+        {
+            CenterCard();
+        }
+
+        private void CenterCard()
+        {
+            if (rightPanel == null || cardPanel == null) return;
+
+            int targetX = Math.Max(20, (rightPanel.ClientSize.Width - cardPanel.Width) / 2);
+            int targetY = Math.Max(20, (rightPanel.ClientSize.Height - cardPanel.Height) / 2);
+
+            cardPanel.Location = new Point(targetX, targetY);
         }
 
         // ── Login button (button1) ─────────────────────────────────────────
@@ -61,21 +97,30 @@ namespace LoginPage
                         cmd.Parameters.AddWithValue("@username", username);
                         cmd.Parameters.AddWithValue("@password", password);
 
-                        object result = cmd.ExecuteScalar();
+                        object? result = cmd.ExecuteScalar();
 
                         if (result != null)
-{
-    int userId = Convert.ToInt32(result);
+                        {
+                            int userId = Convert.ToInt32(result);
+                            SessionManager.SaveSession(userId, username);
 
-    MainForm mainForm = new MainForm(userId);
+                            MainForm mainForm = new MainForm(userId);
 
-    this.Hide();
+                            this.Hide();
+                            mainForm.ShowDialog();
 
-    mainForm.ShowDialog();
-
-    this.Close();
-}
-
+                            if (mainForm.LoggedOut)
+                            {
+                                textBox2.Clear();
+                                this.Show();
+                                CenterCard();
+                                textBox2.Focus();
+                            }
+                            else
+                            {
+                                this.Close();
+                            }
+                        }
                         else
                         {
                             MessageBox.Show("Invalid username or password.", "Login Failed",
@@ -94,7 +139,6 @@ namespace LoginPage
         }
 
         // ── Sign Up button (button2) ───────────────────────────────────────
-        // If your designer named the "Don't have account?" link button2:
         private void button2_Click(object sender, EventArgs e)
         {
             Form1 signupForm = new Form1();

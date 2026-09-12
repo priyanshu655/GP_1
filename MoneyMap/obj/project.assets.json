@@ -236,9 +236,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\gp_1\\MoneyMap\\..csproj",
-      "projectName": ".",
-      "projectPath": "D:\\gp_1\\MoneyMap\\..csproj",
+      "projectUniqueName": "D:\\gp_1\\MoneyMap\\MoneyMap.csproj",
+      "projectName": "MoneyMap",
+      "projectPath": "D:\\gp_1\\MoneyMap\\MoneyMap.csproj",
       "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
       "outputPath": "D:\\gp_1\\MoneyMap\\obj\\",
       "projectStyle": "PackageReference",
